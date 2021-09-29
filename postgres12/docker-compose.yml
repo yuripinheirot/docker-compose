@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  #container name
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/yuri/developmentDatabases/Docker-Compose/PostgreSQL:/var/lib/postgresql/data 
+    networks:
+      - postgres-compose-network
+  
+  #define if u will install pgadmin
+
+  # teste-pgadmin-compose:
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: "renatogroff@yahoo.com.br"
+  #     PGADMIN_DEFAULT_PASSWORD: "PgAdmin2019!"
+  #   ports:
+  #     - "16543:80"
+  #   depends_on:
+  #     - teste-postgres-compose
+  #   networks:
+  #     - postgres-compose-network
+
+networks: 
+  postgres-compose-network:
+    driver: bridge
